@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>NBA visualizations</title>
+        <link rel='icon' href='./nba_logo.png'>
+    <body onload="init()">
+        <h1>NBA Finals Champions by Team from 1980-2018</h3> 
+        
+        <div id="slideTriggers"> 
+            <button type="button" id="teamStats" onclick="switchVisualization()">Team Statistics</button>
+            <button type="button" id="pieStats" onclick="displayPieVisualization()">Free Throw Charts</button>
+        </div>
+
+        <div id="lakersBarChart"> 
+            <svg width="1000" height="600"></svg>
+            <p> This is a bar chart that shows the different teams that have played in the NBA finals from the year of 1980 to 2018. Not all teams in the NBA are included 
+                in this visualization - only the winning teams who have won the championship are included in the bar chart. What we are able to see through this first chart 
+                is that the Lakers are the team that have done the best in terms of winning titles with 10 NBA championships. What we are going to see next is if they were 
+                actually the team that played the best in terms of various different statistics including FG percentages and FT percentages. If we can see a good correlation
+                between the teams record and their stats, we can conclude that these teams truly deserved to win as they played great as a team. If not, then we can conclude 
+                that there were some other factors in allowing certain teams to win many championshisp including a few star players and the factor of luck.  
+            </p>
+        </div>
+        
+        <div id="teamStatsPage"> 
+        <div id="teamStatistics"> 
+            <div id="teamPoints"></div>
+            <div id="teamAssists"></div>
+            <div id="teamRebounds"></div>
+        </div>
+
+        <div id="buttonSlidersForTeam"> 
+            <button type="button" onclick="displayPointsTeamChart()">Team Points</button>
+            <button type="button" onclick="displayAssistsTeamChart()">Team Assists</button>
+            <button type="button" onclick="displayReboundsTeamChart()">Team Rebounds</button>
+
+            <p id="teamStats_para"> This slide is interactive and shows how the individual teams did in every year from 1980-2018. We are able to see the three main statistics in the NBA 
+                which are points, assists and rebounds and see how each team did statistically in order to win the Finals. For example for points, we see that the Rockets 
+                and the Warriors are the ones who perfomed very impressively averaging the highest number of points in the finals. However, they do not have nearly as many 
+                championship wins. Does that make the Warriors 123 points more impressive or the Lakers 10 titles. The warriors scored 123 points on average in the 2017 NBA final
+                while the highest the Lakers have ever averaged in a final that they won was 101 in 2001. This shows how the NBA has improved in terms of its scoring prowess 
+                over the years as well. 
+            </p>
+        </div>
+
+        </div>
+
+        <div id="pieChart">
+            <p id="pieChartEx"> Freethrows are a huge part of the game. Some of the closest games have been won soley off of just freethrows so it is stat line 
+                that we certainly cannot forget. Here we can see how the teams did in the NBA finals over a 7 game series compared to the Runner up teams. The 
+                pie chart is in the color of the winning team so you can find the corresponding runner up team that played in the finals against that team. There 
+                is also a tooltip that allows for exploration where you can see the names of winning team, the runner up team and their free throw percentages. 
+            </p>
+            <p id = "pieChartSvgTitle"> Freethrow Percentages of Winning Teams: </p>
+            <svg id="pieChartSvg"></svg> 
+            <div id="tooltip" class="hidden">
+                <p><span id="tooltipTitle">title</span>
+                </p>
+                <p>Freethrow percentage: <span id="value">100</span>%</p>
+            </div>
+
+            <p id = "pieChartSvgRunnerUpTitle"> Freethrow Percentages of RunnerUp Teams: </p>
+            <svg id="pieChartSvgRunnerUp"></svg> 
+            <div id="tooltip2" class="hidden">
+                <p><span id="tooltipTitle2">title</span>
+                </p>
+                <p>Freethrow percentage: <span id="value2">100</span>%</p>
+            </div>
+        </div>
+
+        <script src='https://d3js.org/d3.v5.min.js'></script>
+        <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+        <script src="index.js"></script> 
+        <link rel="stylesheet" href="index.css" />
+    </body>
+</html>
