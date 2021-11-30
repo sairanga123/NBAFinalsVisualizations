@@ -31,7 +31,7 @@ async function switchVisualization() {
 
 
         const data = await d3.csv(
-            'https://raw.githubusercontent.com/sairanga123/DataVisualizationNBAFinals/main/championsdata.csv'
+            'https://raw.githubusercontent.com/sairanga123/NBAFinalsVisualizations/main/championsdata.csv'
         ); 
     
         console.log(data[0]); 
@@ -130,7 +130,7 @@ async function displayPieVisualization() {
     }
 
     const data = await d3.csv(
-        'https://raw.githubusercontent.com/sairanga123/DataVisualizationNBAFinals/main/championsdata.csv'
+        'https://raw.githubusercontent.com/sairanga123/NBAFinalsVisualizations/main/championsdata.csv'
     ); 
 
     pie_nested_data = d3.nest()
@@ -181,7 +181,7 @@ async function displayPieVisualization() {
       });
 
     const runner_up_data = await d3.csv(
-        'https://raw.githubusercontent.com/sairanga123/DataVisualizationNBAFinals/main/runnerupsdata.csv'
+        'https://raw.githubusercontent.com/sairanga123/NBAFinalsVisualizations/main/runnerupsdata.csv'
     ); 
 
     pie_nested_data_runnerup = d3.nest()
@@ -246,7 +246,7 @@ function displayReboundsTeamChart() {
 
 async function getDataHelper() { 
     const data = await d3.csv(
-        'https://raw.githubusercontent.com/sairanga123/DataVisualizationNBAFinals/main/championsdata.csv'
+        'https://raw.githubusercontent.com/sairanga123/NBAFinalsVisualizations/main/championsdata.csv'
     ); 
     return data; 
 }
@@ -682,7 +682,7 @@ function getReboundsChartForTeam(data) {
 }
 async function init() { 
     const data = await d3.csv(
-        'https://raw.githubusercontent.com/sairanga123/DataVisualizationNBAFinals/main/championsdata.csv'
+        'https://raw.githubusercontent.com/sairanga123/NBAFinalsVisualizations/main/championsdata.csv'
     ); 
 
     var nested_data = d3.nest()
