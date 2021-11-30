@@ -1,0 +1,155 @@
+h1 { 
+    margin-top: 10vh; 
+    color: black;
+    text-align: center; 
+}
+
+#teamStatistics { 
+    display: none; 
+}
+#teamPoints { 
+    display: none; 
+}
+#teamAssists {
+    margin-top: 5vh; 
+    display: none;  
+}
+
+#teamRebounds { 
+    margin-top: 5vh; 
+    display: none; 
+}   
+
+#buttonSlidersForTeam {
+    margin-top: 5vh; 
+    display: none; 
+}
+#slideTriggers { 
+    margin-bottom: 4vh; 
+}
+body  {
+    margin: auto; 
+    text-align: center;
+    background-color: #C5C6C7;
+    font-family: 'Courier New', monospace;
+}
+.annotations {
+    fill:black; 
+    color:black;
+}
+text { 
+    fill: black; 
+    font-size: 12pt;
+}
+rect:hover { 
+    opacity: 0.8;
+
+}
+
+p { 
+    text-align: center;
+    margin: auto;
+    width: 75%; 
+    margin-bottom: 5vh;
+    font-size: 18pt;
+    font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+}
+
+#teamStats_para  {
+    margin-top: 5vh; 
+}
+
+rect:hover > #lakersAnnotation { 
+    display: block;
+}
+
+.focus circle {
+    fill: steelblue;
+}
+
+.focus text {
+    font-size: 14px;
+}
+
+.tooltip {
+    fill: white;
+    stroke: #000;
+}
+
+.tooltip-team, .tooltip-likes {
+    font-weight: bold;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+#tooltip {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    -mox-box-shadow: 4px 4px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 10px rbga(0, 0, 0, 0.4) 
+}
+
+#tooltip2 {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    -mox-box-shadow: 4px 4px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 10px rbga(0, 0, 0, 0.4) 
+}
+
+#tooltip.hidden {
+    opacity: 0;
+}
+
+#tooltip2.hidden {
+    opacity: 0;
+}
+
+#tooltip p {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+#tooltip2 p {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+#pieChartSvgTitle {
+    display: none; 
+}
+#pieChartSvgRunnerUpTitle {
+    display: none; 
+    margin-top: -5vh; 
+}
+
+#pieChartSvg { 
+    margin-left: 28vw; 
+}
+
+#pieChartEx {
+    display: none; 
+}
+
+#pieChartSvgRunnerup { 
+    margin-left: 24vw; 
+}
