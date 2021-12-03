@@ -153,3 +153,6 @@ rect:hover > #lakersAnnotation {
 #pieChartSvgRunnerup { 
     margin-left: 24vw; 
 }
+#bonus_graphs {
+    display: none; 
+}
