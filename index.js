@@ -102,6 +102,8 @@ async function displayPieVisualization() {
     let pieStateTitle1 = document.getElementById("pieChartSvgTitle"); 
     let pieStateTitle2 = document.getElementById("pieChartSvgRunnerUpTitle"); 
 
+    let bonusgraphs = document.getElementById("bonus_graphs"); 
+
 
 
     let pieChart = document.getElementById("pieChart");
@@ -114,6 +116,7 @@ async function displayPieVisualization() {
         pieStatsButton.innerHTML = "Championship Stats"; 
         pieStateTitle1.style.display = "block"; 
         pieStateTitle2.style.display = "block"; 
+        bonusgraphs.style.display = "block"; 
         pieChartEx.style.display = "block"; 
 
     } else { 
@@ -124,6 +127,7 @@ async function displayPieVisualization() {
         teamStatsButton.style.visibility = "visible"; 
         pieStateTitle1.style.display = "none";
         pieStateTitle2.style.display = "none"; 
+        bonusgraphs.style.display = "none"; 
         pieChartEx.style.display = "none"; 
 
 
@@ -211,7 +215,7 @@ async function displayPieVisualization() {
         .append("g")
                 .attr("transform","translate(" + margin + "," + margin + ")")
     .selectAll("path")
-    .data(pie(values))
+    .data(pie(runnerup_values))
     .enter()
     .append("path")
     .attr("d",arc)
@@ -229,6 +233,106 @@ async function displayPieVisualization() {
         d3.select("#tooltip2").style('opacity', 0);
       });
 
+    
+    pie_nested_data = pie_nested_data.slice(0,11);  
+    var svg = d3.select("#barChartSvgTitle"), 
+    margin = 100, 
+    width = svg.attr("width") - margin,
+    height = svg.attr("height") - 200;
+
+    svg.append("text")
+    .attr("x", (width / 2)+100)             
+    .attr("y", 50)
+    .attr("text-anchor", "middle")  
+    .style("font-size", "40px") 
+    .style("text-decoration", "underline")  
+    .text("Average Free throw percentage by team");
+
+    var chart3 = svg.append('g')
+    .attr('transform', `translate(${margin}, ${margin})`);
+
+    const yScale = d3.scaleLinear()
+    .range([height, 0])
+    .domain([0, 100]);
+
+    chart3.append('g')
+    .call(d3.axisLeft(yScale));
+
+    const xScale = d3.scaleBand()
+    .range([0, width])
+    .domain(pie_nested_data.map((d) => d.key))
+    .padding(0.2)
+
+    chart3.append('g')
+    .attr('transform', `translate(0, ${height})`)
+    .call(d3.axisBottom(xScale));
+
+    chart3.append('g')
+    .attr('transform', `translate(0, ${height})`)
+    .call(d3.axisBottom(xScale));
+    
+    chart3.selectAll()
+    .data(pie_nested_data)
+    .enter()
+    .append('rect')
+    .attr('x', (s) => xScale(s.key))
+    .attr('y', (s) => yScale(s.value))
+    .attr("fill", function(d,i) {return color[i];})
+    .attr('height', (s) => height - yScale(s.value))
+    .attr('width', xScale.bandwidth())
+
+
+    threept_nested_data = d3.nest()
+    .key(function(d){return d.Team; }) 
+    .rollup(function(v) { return d3.mean(v, function(d) { return Math.round((d.TP*100),2); }); })
+    .entries(data);
+
+    console.log(threept_nested_data); 
+    threept_nested_data
+    var svg = d3.select("#barChartSvgTitle3pt"), 
+    margin = 100, 
+    width = svg.attr("width") - margin,
+    height = svg.attr("height") - 200;
+    svg.append("text")
+        .attr("x", (width / 2)+100)             
+        .attr("y", 50)
+        .attr("text-anchor", "middle")  
+        .style("font-size", "35px") 
+        .style("text-decoration", "underline")  
+        .text("Overall 3 pointers shot by team in Finals");
+
+    var chart4 = svg.append('g')
+    .attr('transform', `translate(${margin}, ${margin})`);
+
+    const yScale2 = d3.scaleLinear()
+    .range([height, 0])
+    .domain([0, 2000]);
+
+    chart4.append('g')
+    .call(d3.axisLeft(yScale2));
+
+    const xScale2 = d3.scaleBand()
+    .range([0, width])
+    .domain(pie_nested_data.map((d) => d.key))
+    .padding(0.2)
+
+    chart4.append('g')
+    .attr('transform', `translate(0, ${height})`)
+    .call(d3.axisBottom(xScale2));
+
+    chart4.append('g')
+    .attr('transform', `translate(0, ${height})`)
+    .call(d3.axisBottom(xScale2));
+    
+    chart4.selectAll()
+    .data(threept_nested_data)
+    .enter()
+    .append('rect')
+    .attr('x', (s) => xScale2(s.key))
+    .attr('y', (s) => yScale2(s.value))
+    .attr("fill", function(d,i) {return color[i];})
+    .attr('height', (s) => height - yScale2(s.value))
+    .attr('width', xScale2.bandwidth())
 
 }
 
@@ -800,4 +904,3 @@ async function init() {
       .attr("id", "bullsAnnotation")
       .call(makeBullsAnnotations)
 }   
-
